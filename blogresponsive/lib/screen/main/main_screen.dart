@@ -7,18 +7,19 @@ import 'components/header.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return Scaffold(
-      body: Column(
-        children: [
-          const Header(),
-          Container(
-            padding: const EdgeInsets.all(kDefaultPadding),
-            constraints: const BoxConstraints(maxWidth: kMaxWidth),
-            child: const HomeScreen(),
-
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Header(),
+            Container(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              constraints: const BoxConstraints(maxWidth: kMaxWidth),
+              child: const HomeScreen(),
+      
+            )
+          ],
+        ),
       ),
     );
   }
