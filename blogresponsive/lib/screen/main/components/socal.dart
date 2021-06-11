@@ -13,9 +13,11 @@ class Socal extends StatelessWidget {
     return Row(
       children: [
         SvgPicture.asset('assets/icons/behance-alt.svg'),
-         Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
-      child: SvgPicture.asset('assets/icons/feather_dribbble.svg'),
+        Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: kDefaultPadding),
+      child: SvgPicture.asset(
+          'assets/icons/feather_dribbble.svg'),
     ),
     SvgPicture.asset('assets/icons/feather_twitter.svg'),
     const SizedBox(
