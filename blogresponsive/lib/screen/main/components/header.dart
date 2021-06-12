@@ -1,15 +1,14 @@
-import 'dart:html';
-
+import 'package:blogresponsive/controllers/menu_controller.dart';
 import 'package:blogresponsive/screen/main/components/socal.dart';
 import 'package:blogresponsive/screen/main/components/web_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../../constants.dart';
+import '../../responsive.dart';
 
 class Header extends StatelessWidget {
-  const Header({
-    Key? key,
-  }) : super(key: key);
+  final MenuController _controller = Get.put(MenuController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +24,22 @@ class Header extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(kDefaultPadding),
                   constraints: const BoxConstraints(maxWidth: kMaxWidth),
-                  // ignore: sort_child_properties_last
                   child: Column(
                     children: [
                       Row(
                         children: [
+                          if (!Responsive.isDesktop(context))
+                            IconButton(
+                                onPressed: () {
+                                  _controller.openOrCloseDrawer();
+                                },
+                                icon: const Icon(
+                                  Icons.menu,
+                                  color: Colors.white,
+                                )),
                           SvgPicture.asset("assets/icons/logo.svg"),
                           const Spacer(),
-                          WebMenu(),
+                          if (Responsive.isDesktop(context)) WebMenu(),
                           const Spacer(),
                           const Socal(),
                         ],
@@ -66,19 +73,26 @@ class Header extends StatelessWidget {
                             child: Row(
                               // ignore: prefer_const_literals_to_create_immutables
                               children: [
-                                 const Text(
+                                const Text(
                                   'Learn More',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
                                   ),
-                                ), 
-                                const SizedBox(width: kDefaultPadding / 2,),
-                                const Icon(Icons.arrow_forward, color: Colors.white,)
+                                ),
+                                const SizedBox(
+                                  width: kDefaultPadding / 2,
+                                ),
+                                const Icon(
+                                  Icons.arrow_forward,
+                                  color: Colors.white,
+                                )
                               ],
                             )),
                       ),
-                      const SizedBox(height: kDefaultPadding ,),
+                      const SizedBox(
+                        height: kDefaultPadding,
+                      ),
                     ],
                   ),
                 )

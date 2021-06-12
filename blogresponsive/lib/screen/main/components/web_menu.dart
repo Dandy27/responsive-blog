@@ -11,9 +11,9 @@ class WebMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => Row(
           children: List.generate(
-            _controller.menuItens.length,
+            _controller.menuItems.length,
             (index) => WebMenuItem(
-              text: _controller.menuItens[index],
+              text: _controller.menuItems[index],
               isActive: index == _controller.selectedIndex,
               press: () => _controller.setMenuIndex(index),
             ),
